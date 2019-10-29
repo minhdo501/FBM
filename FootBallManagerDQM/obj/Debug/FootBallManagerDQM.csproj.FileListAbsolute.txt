@@ -1,0 +1,14 @@
+C:\Users\STUDENT\source\repos\FootBallManagerDQM\FootBallManagerDQM\bin\Debug\FootBallManagerDQM.exe.config
+C:\Users\STUDENT\source\repos\FootBallManagerDQM\FootBallManagerDQM\bin\Debug\FootBallManagerDQM.exe
+C:\Users\STUDENT\source\repos\FootBallManagerDQM\FootBallManagerDQM\bin\Debug\FootBallManagerDQM.pdb
+C:\Users\STUDENT\source\repos\FootBallManagerDQM\FootBallManagerDQM\obj\Debug\FootBallManagerDQM.csprojAssemblyReference.cache
+C:\Users\STUDENT\source\repos\FootBallManagerDQM\FootBallManagerDQM\obj\Debug\FootBallManagerDQM.FrmMain.resources
+C:\Users\STUDENT\source\repos\FootBallManagerDQM\FootBallManagerDQM\obj\Debug\FootBallManagerDQM.Functions.FrmNhapKetQua.resources
+C:\Users\STUDENT\source\repos\FootBallManagerDQM\FootBallManagerDQM\obj\Debug\FootBallManagerDQM.Properties.Resources.resources
+C:\Users\STUDENT\source\repos\FootBallManagerDQM\FootBallManagerDQM\obj\Debug\FootBallManagerDQM.csproj.GenerateResource.cache
+C:\Users\STUDENT\source\repos\FootBallManagerDQM\FootBallManagerDQM\obj\Debug\FootBallManagerDQM.csproj.CoreCompileInputs.cache
+C:\Users\STUDENT\source\repos\FootBallManagerDQM\FootBallManagerDQM\obj\Debug\FootBallManagerDQM.exe
+C:\Users\STUDENT\source\repos\FootBallManagerDQM\FootBallManagerDQM\obj\Debug\FootBallManagerDQM.pdb
+C:\Users\STUDENT\source\repos\FootBallManagerDQM\FootBallManagerDQM\obj\Debug\FootBallManagerDQM.Functions.FrmBangXepHang.resources
+C:\Users\STUDENT\source\repos\FootBallManagerDQM\FootBallManagerDQM\bin\Debug\Data\DatabaseFootballManager.mdf
+C:\Users\STUDENT\source\repos\FootBallManagerDQM\FootBallManagerDQM\bin\Debug\Data\DatabaseFootballManager_log.ldf
