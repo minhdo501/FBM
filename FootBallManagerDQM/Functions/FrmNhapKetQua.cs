@@ -96,6 +96,37 @@ namespace FootBallManagerDQM.Functions
                 }
             }
         }
+
+        /*private void TinhHieuSoBanThang()
+        {
+            // Lấy dữ liệu tỷ số của đội 1 và 2
+            string str = txtTySo.Text;
+            int tyso1 = Convert.ToInt32(str.Split('-')[0]);
+            int tyso2 = Convert.ToInt32(str.Split('-')[1]);
+            int hieuso = tyso1 - tyso2;
+            int hieuso1 = tyso2 - tyso1;
+
+            int diemdoi1, diemdoi2;
+
+            // So sánh dữ liệu tỷ số đội 1 và đội 2 để tính điểm
+            if (hieuso > 0)
+            {
+                diemdoi1 = 3;
+                diemdoi2 = 0;
+            } else if (hieuso == 0)
+            {
+                diemdoi1 = 1;
+                diemdoi2 = 1;
+            } else if (hieuso < 0)
+            {
+                diemdoi1 = 0;
+                diemdoi2 = 3;
+            } else
+            {
+                diemdoi1 = diemdoi2 = 0;
+            }
+        }*/
+
         private void btnThem_Click(object sender, EventArgs e)
         {
             // Kiểm tra dữ liệu nhập
@@ -105,14 +136,48 @@ namespace FootBallManagerDQM.Functions
                 return;
             }
 
-            // Tạo câu lệnh để thực thi đến database
-            string queryString = @"INSERT INTO BangDiemThiDau([TenBang], [TenDoi], [TenDoiDoiThu], [TiSo]) VALUES(@txtVongBang, @txtDoi1, @txtDoi2, @txtTySo)";
+            //TinhHieuSoBanThang();
+
+            // Lấy dữ liệu tỷ số của đội 1 và 2
+            string str = txtTySo.Text;
+            int tyso1 = Convert.ToInt32(str.Split('-')[0]);
+            int tyso2 = Convert.ToInt32(str.Split('-')[1]);
+            string tysodao = (tyso2 + '-' + tyso1).ToString();
+
+            int hieuso = tyso1 - tyso2;
+            int hieuso1 = tyso2 - tyso1;
+
+            int diemdoi1, diemdoi2;
+
+            // So sánh dữ liệu tỷ số đội 1 và đội 2 để tính điểm
+            if (hieuso > 0)
+            {
+                diemdoi1 = 3;
+                diemdoi2 = 0;
+            }
+            else if (hieuso == 0)
+            {
+                diemdoi1 = 1;
+                diemdoi2 = 1;
+            }
+            else if (hieuso < 0)
+            {
+                diemdoi1 = 0;
+                diemdoi2 = 3;
+            }
+            else
+            {
+                diemdoi1 = diemdoi2 = 0;
+            }
+
+            // Tạo câu lệnh để thực thi đến database đối với đội 1
+            string queryInsert = @"INSERT INTO BangDiemThiDau([TenBang], [TenDoi], [TenDoiDoiThu], [TiSo], [HieuSo], [Diem]) VALUES(@txtVongBang, @txtDoi1, @txtDoi2, @txtTySo, @hieuso, @diem)";
 
             // Tạo object từ class SqlConnection (dùng để quản lý kết nối đến Database Server)
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 // Tạo object từ class SqlCommand (dùng để quản lý việc thực thi câu lệnh)
-                using (SqlCommand command = new SqlCommand(queryString, connection))
+                using (SqlCommand command = new SqlCommand(queryInsert, connection))
                 {
                     try
                     {
@@ -125,6 +190,50 @@ namespace FootBallManagerDQM.Functions
                         command.Parameters.AddWithValue("@txtDoi1", txtDoi1.Text);
                         command.Parameters.AddWithValue("@txtDoi2", txtDoi2.Text);
                         command.Parameters.AddWithValue("@txtTySo", txtTySo.Text);
+                        command.Parameters.AddWithValue("@sotrandathidau", 1);
+                        command.Parameters.AddWithValue("@hieuso", hieuso);
+                        command.Parameters.AddWithValue("@diem", diemdoi1);
+
+                        // Thực thi câu lệnh
+                        int effect = command.ExecuteNonQuery();
+
+                        // Ngắt kết nối đến Database Server
+                        connection.Close();
+
+                        // Load lại danh sách cấu hình
+                        LoadBangDiemThiDau();
+                    }
+                    catch (Exception ex)
+                    {
+                        // Hiển thị thông báo nếu có lỗi
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+
+            // Tạo câu lệnh để thực thi đến database đối với đội 2
+            string queryInsert1 = @"INSERT INTO BangDiemThiDau([TenBang], [TenDoi], [TenDoiDoiThu], [TiSo], [sotrandathidau],[HieuSo], [Diem]) VALUES(@txtVongBang, @txtDoi1, @txtDoi2, @txtTySo, @sotrandathidau, @hieuso, @diem)";
+
+            // Tạo object từ class SqlConnection (dùng để quản lý kết nối đến Database Server)
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                // Tạo object từ class SqlCommand (dùng để quản lý việc thực thi câu lệnh)
+                using (SqlCommand command = new SqlCommand(queryInsert1, connection))
+                {
+                    try
+                    {
+                        // Mở kết nối đến Database Server
+                        connection.Open();
+
+                        // Truyền dữ liệu vào đúng tham số
+                        command.CommandType = CommandType.Text;
+                        command.Parameters.AddWithValue("@txtVongBang", txtVongBang.Text);
+                        command.Parameters.AddWithValue("@txtDoi1", txtDoi2.Text);
+                        command.Parameters.AddWithValue("@txtDoi2", txtDoi1.Text);
+                        command.Parameters.AddWithValue("@txtTySo", tysodao);
+                        command.Parameters.AddWithValue("@sotrandathidau", 1);
+                        command.Parameters.AddWithValue("@hieuso", hieuso1);
+                        command.Parameters.AddWithValue("@diem", diemdoi2);
 
                         // Thực thi câu lệnh
                         int effect = command.ExecuteNonQuery();
