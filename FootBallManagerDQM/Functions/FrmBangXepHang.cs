@@ -63,19 +63,19 @@ namespace FootBallManagerDQM.Functions
                         // Đổ dữ liệu vào dataset
                         databaseFootballManagerDataSet.BangDiemThiDau.Clear();
                         adapter.Fill(databaseFootballManagerDataSet.BangDiemThiDau);
-                        
+
                         int i = 1;
                         foreach (DataRow row in databaseFootballManagerDataSet.BangDiemThiDau.Rows)
                         {
-                            row["STT"] = i;
+                            row["Id"] = i;
                             i++;
                         }
 
                         // Hiển thị dữ liệu
                         bangDiemThiDauBindingSource.DataSource = databaseFootballManagerDataSet.BangDiemThiDau;
-                        bangKetQuaDataGridView.DataSource = bangDiemThiDauBindingSource;
+                        bangDiemThiDauDataGridView.DataSource = bangDiemThiDauBindingSource;
 
-                        bangKetQuaDataGridView.Refresh();
+                        bangDiemThiDauDataGridView.Refresh();
 
                         // Ngắt kết nối đến Database Server
                         connection.Close();
@@ -87,5 +87,11 @@ namespace FootBallManagerDQM.Functions
                     }
                 }
             }
+        }
+
+        private void bangDiemThiDauBindingNavigator_RefreshItems(object sender, EventArgs e)
+        {
+
+        }
     }
 }

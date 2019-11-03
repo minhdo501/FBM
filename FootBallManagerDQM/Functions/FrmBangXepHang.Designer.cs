@@ -49,13 +49,13 @@
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.bangDiemThiDauBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.bangDiemThiDauDataGridView = new System.Windows.Forms.DataGridView();
+            this.btnThongKe = new System.Windows.Forms.Button();
+            this.btnThoat = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnThongKe = new System.Windows.Forms.Button();
-            this.btnThoat = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.databaseFootballManagerDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bangDiemThiDauBindingSource)).BeginInit();
@@ -122,6 +122,7 @@
             this.bangDiemThiDauBindingNavigator.Size = new System.Drawing.Size(553, 25);
             this.bangDiemThiDauBindingNavigator.TabIndex = 1;
             this.bangDiemThiDauBindingNavigator.Text = "bindingNavigator1";
+            this.bangDiemThiDauBindingNavigator.RefreshItems += new System.EventHandler(this.bangDiemThiDauBindingNavigator_RefreshItems);
             // 
             // bindingNavigatorAddNewItem
             // 
@@ -234,6 +235,26 @@
             this.bangDiemThiDauDataGridView.Size = new System.Drawing.Size(544, 220);
             this.bangDiemThiDauDataGridView.TabIndex = 2;
             // 
+            // btnThongKe
+            // 
+            this.btnThongKe.Location = new System.Drawing.Point(322, 338);
+            this.btnThongKe.Name = "btnThongKe";
+            this.btnThongKe.Size = new System.Drawing.Size(141, 23);
+            this.btnThongKe.TabIndex = 3;
+            this.btnThongKe.Text = "Thống kê bảng xếp hạng";
+            this.btnThongKe.UseVisualStyleBackColor = true;
+            this.btnThongKe.Click += new System.EventHandler(this.btnThongKe_Click);
+            // 
+            // btnThoat
+            // 
+            this.btnThoat.Location = new System.Drawing.Point(469, 338);
+            this.btnThoat.Name = "btnThoat";
+            this.btnThoat.Size = new System.Drawing.Size(75, 23);
+            this.btnThoat.TabIndex = 3;
+            this.btnThoat.Text = "Thoát";
+            this.btnThoat.UseVisualStyleBackColor = true;
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
+            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "Id";
@@ -264,26 +285,6 @@
             this.dataGridViewTextBoxColumn8.DataPropertyName = "Diem";
             this.dataGridViewTextBoxColumn8.HeaderText = "Điểm";
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            // 
-            // btnThongKe
-            // 
-            this.btnThongKe.Location = new System.Drawing.Point(322, 338);
-            this.btnThongKe.Name = "btnThongKe";
-            this.btnThongKe.Size = new System.Drawing.Size(141, 23);
-            this.btnThongKe.TabIndex = 3;
-            this.btnThongKe.Text = "Thống kê bảng xếp hạng";
-            this.btnThongKe.UseVisualStyleBackColor = true;
-            this.btnThongKe.Click += new System.EventHandler(this.btnThongKe_Click);
-            // 
-            // btnThoat
-            // 
-            this.btnThoat.Location = new System.Drawing.Point(469, 338);
-            this.btnThoat.Name = "btnThoat";
-            this.btnThoat.Size = new System.Drawing.Size(75, 23);
-            this.btnThoat.TabIndex = 3;
-            this.btnThoat.Text = "Thoát";
-            this.btnThoat.UseVisualStyleBackColor = true;
-            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
             // FrmBangXepHang
             // 
@@ -334,11 +335,11 @@
         private System.Windows.Forms.ToolStripButton bangDiemThiDauBindingNavigatorSaveItem;
         private System.Windows.Forms.Button btnThongKe;
         private System.Windows.Forms.Button btnThoat;
+        public System.Windows.Forms.DataGridView bangDiemThiDauDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        public System.Windows.Forms.DataGridView bangDiemThiDauDataGridView;
     }
 }
