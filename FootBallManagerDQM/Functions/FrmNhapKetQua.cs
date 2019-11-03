@@ -78,12 +78,13 @@ namespace FootBallManagerDQM.Functions
                         adapter.SelectCommand = command;
 
                         // Đổ dữ liệu vào dataset
+                        databaseFootballManagerDataSet.BangDiemThiDau.Clear();
                         adapter.Fill(databaseFootballManagerDataSet.BangDiemThiDau);
 
                         // Hiển thị dữ liệu
-                        bangDiemThiDauBindingSource.DataSource = null;
                         bangDiemThiDauBindingSource.DataSource = databaseFootballManagerDataSet.BangDiemThiDau;
-                        //bangDiemThiDauDataGridView.Refresh();
+                        bangDiemThiDauDataGridView.DataSource = bangDiemThiDauBindingSource;
+                        bangDiemThiDauDataGridView.Refresh();
 
                         // Ngắt kết nối đến Database Server
                         connection.Close();
@@ -171,7 +172,7 @@ namespace FootBallManagerDQM.Functions
             }
 
             // Tạo câu lệnh để thực thi đến database đối với đội 1
-            string queryInsert = @"INSERT INTO BangDiemThiDau([TenBang], [TenDoi], [TenDoiDoiThu], [TiSo], [HieuSo], [Diem]) VALUES(@txtVongBang, @txtDoi1, @txtDoi2, @txtTySo, @hieuso, @diem)";
+            string queryInsert = @"INSERT INTO BangDiemThiDau([TenBang], [TenDoi], [TenDoiDoiThu], [TiSo], [HieuSo], [Diem]) VALUES (@txtVongBang, @txtDoi1, @txtDoi2, @txtTySo, @hieuso, @diem)";
 
             // Tạo object từ class SqlConnection (dùng để quản lý kết nối đến Database Server)
             using (SqlConnection connection = new SqlConnection(connectionString))

@@ -63,10 +63,11 @@ namespace FootBallManagerDQM.Functions
                         // Đổ dữ liệu vào dataset
                         databaseFootballManagerDataSet.BangDiemThiDau.Clear();
                         adapter.Fill(databaseFootballManagerDataSet.BangDiemThiDau);
+                        
                         int i = 1;
                         foreach (DataRow row in databaseFootballManagerDataSet.BangDiemThiDau.Rows)
                         {
-                            row["Stt"] = i;
+                            row["STT"] = i;
                             i++;
                         }
 
